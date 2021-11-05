@@ -16,11 +16,12 @@ export TF_CLI_ARGS_init=${TF_CLI_ARGS_init:'-input=false'}
 # Need to create the upper and work dirs inside a tmpfs.
 # Otherwise OverlayFS complains about AUFS folders.
 # Source: https://gist.github.com/detunized/7c8fc4c37b49c5475e68ef9574587eee
-mkdir -p /tmp/overlay && \
+mkdir -vp /tmp/overlay && \
 mount -t tmpfs tmpfs /tmp/overlay && \
-mkdir -p /tmp/overlay/upper && \
-mkdir -p /tmp/overlay/work && \
-mkdir -p /data-rw && \
+mkdir -vp /tmp/overlay/upper && \
+mkdir -vp /tmp/overlay/work && \
+mkdir -vp /data-rw && \
+# chown -R "$(id -u)":"$(id -g)" /data-rw
 mount -t overlay overlay -o lowerdir=/data,upperdir=/tmp/overlay/upper,workdir=/tmp/overlay/work /data-rw
 
 # change to the overlayFS
