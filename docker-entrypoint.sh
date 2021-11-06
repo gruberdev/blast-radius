@@ -21,7 +21,7 @@ mount -t tmpfs tmpfs /tmp/overlay && \
 mkdir -vp /tmp/overlay/upper && \
 mkdir -vp /tmp/overlay/work && \
 mkdir -vp /data-rw && \
-# chown -R "$(id -u)":"$(id -g)" /data-rw
+chown -R "$(id -u)":"$(id -g)" /data-rw
 mount -t overlay overlay -o lowerdir=/data,upperdir=/tmp/overlay/upper,workdir=/tmp/overlay/work /data-rw
 
 # change to the overlayFS

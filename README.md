@@ -55,7 +55,7 @@ docker run --rm -it -p 127.0.0.1:5000:5000 \
   -v $(pwd):/data:ro \
   --security-opt apparmor:unconfined \
   --cap-add=SYS_ADMIN \
-  dreampathsprojekt/blast-radius:1.0.3
+  dreampathsprojekt/blast-radius:noroot-1.0.3
 
 # Terraform Cloud
 docker run --rm -it -p 127.0.0.1:5000:5000 \
@@ -63,7 +63,7 @@ docker run --rm -it -p 127.0.0.1:5000:5000 \
   -v $HOME/.terraform.d/credentials.tfrc.json:/root/.terraform.d/credentials.tfrc.json:ro \
   --security-opt apparmor:unconfined \
   --cap-add=SYS_ADMIN \
-  dreampathsprojekt/blast-radius:1.0.3
+  dreampathsprojekt/blast-radius:noroot-1.0.3
 ```
 
 A slightly more customized variant of this is also available as an example
