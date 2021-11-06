@@ -51,19 +51,19 @@ And you will shortly be rewarded with a browser link http://127.0.0.1:5000/.
 To launch *Blast Radius* for a local directory by manually running:
 
 ```sh
-docker run --rm -it -p 127.0.0.1:5000:5000 \
+docker run --rm -it -p 5000:5000 \
   -v $(pwd):/data:ro \
   --security-opt apparmor:unconfined \
   --cap-add=SYS_ADMIN \
-  dreampathsprojekt/blast-radius:noroot-1.0.3
+  28mm/blast-radius
 
 # Terraform Cloud
-docker run --rm -it -p 127.0.0.1:5000:5000 \
+docker run --rm -it -p 5000:5000 \
   -v $(pwd):/data:ro \
   -v $HOME/.terraform.d/credentials.tfrc.json:/root/.terraform.d/credentials.tfrc.json:ro \
   --security-opt apparmor:unconfined \
   --cap-add=SYS_ADMIN \
-  dreampathsprojekt/blast-radius:noroot-1.0.3
+  28mm/blast-radius
 ```
 
 A slightly more customized variant of this is also available as an example
