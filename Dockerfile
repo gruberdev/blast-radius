@@ -1,15 +1,15 @@
 ARG TF_VERSION=1.0.3
 ARG PYTHON_VERSION=3.8.6
 
-ARG USER_NAME=dockeruser
-ARG USER_UID=1000
-ARG USER_GID=${USER_UID}
-
 
 FROM hashicorp/terraform:$TF_VERSION AS terraform
 
 
 FROM python:$PYTHON_VERSION-alpine
+
+ARG USER_NAME=dockeruser
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
 
 RUN pip install -U pip ply \
  && apk add --update --no-cache graphviz ttf-freefont sudo
