@@ -56,6 +56,14 @@ docker run --rm -it -p 5000:5000 \
   --security-opt apparmor:unconfined \
   --cap-add=SYS_ADMIN \
   28mm/blast-radius
+
+# Terraform Cloud
+docker run --rm -it -p 5000:5000 \
+  -v $(pwd):/data:ro \
+  -v $HOME/.terraform.d/credentials.tfrc.json:/root/.terraform.d/credentials.tfrc.json:ro \
+  --security-opt apparmor:unconfined \
+  --cap-add=SYS_ADMIN \
+  28mm/blast-radius
 ```
 
 A slightly more customized variant of this is also available as an example
