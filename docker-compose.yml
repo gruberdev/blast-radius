@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+
+  blastradius:
+    image: kyxap/blast-radius
+    build:
+      context: ./
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      - TOKEN
+      - TF_WORKSPACE
+    ports:
+      - "5000:5000"
+    volumes:
+      - "${PROJECT_DIR}:/data:ro"
+    secrets:
+      - ssh_key
+secrets:
+  ssh_key:
+    file: ${SSH_KEY}

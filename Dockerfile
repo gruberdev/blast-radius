@@ -1,11 +1,12 @@
-ARG TF_VERSION=1.0.0
+ARG TF_VERSION=1.1.0
 ARG PYTHON_VERSION=3.8.6
 
 FROM hashicorp/terraform:$TF_VERSION AS terraform
 
 FROM python:$PYTHON_VERSION-alpine
 RUN pip install -U pip ply \
- && apk add --update --no-cache graphviz ttf-freefont
+ && apk add --update --no-cache graphviz ttf-freefont openssh-client git bash vim expect
+COPY ./login-script /root/login-script
 
 COPY --from=terraform /bin/terraform /bin/terraform
 COPY ./docker-entrypoint.sh /bin/docker-entrypoint.sh

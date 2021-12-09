@@ -25,7 +25,11 @@ mount -t overlay overlay -o lowerdir=/data,upperdir=/tmp/overlay/upper,workdir=/
 
 # change to the overlayFS
 cd /data-rw
-
+# setup ssh to download modules
+eval "$(ssh-agent)"
+ssh-add /run/secrets/ssh_key
+# login to app.terraform.io
+expect /root/login-script
 # Is Terraform already initialized? Ensure modules are all downloaded.
 [ -d '.terraform' ] && terraform get
 
