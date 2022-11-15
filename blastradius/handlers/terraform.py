@@ -36,7 +36,7 @@ class Terraform:
             for name, mod in [(k, v) for x in self.config['module'] for (k, v) in x.items()]:
                 if 'source' not in mod:
                     continue
-                source = mod['source'][0]
+                source = mod['source']
 
                 path = os.path.join(self.directory, source)
                 if os.path.exists(path):
